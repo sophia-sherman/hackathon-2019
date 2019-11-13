@@ -3,11 +3,13 @@ from pathlib import Path        # allows OS independent pathing
 import json
 import datetime
 
+
 class ReportParser:
     def __init__(self):
         self.root_directory = Path("data/")
         self.output_directory = Path("output_reports/")
         self.file_pattern = "*"
+        self.service = "unknown"
 
     @staticmethod
     def info(data):
@@ -39,6 +41,10 @@ class ReportParser:
         formated_data = datetime_object.strftime("%Y%m%d_%H%M%S")
         return formated_data
 
+    def build_output_file_name(self, output_report):
+        report_date = output_report["report_date"]
+        return "{0}_{1}.json".format(report_date, self.service)
+
     def get_all_reports(self):
         ReportParser.info("Parsing reports at: {0}".format(self.root_directory))
 
@@ -48,13 +54,18 @@ class ReportParser:
 
         return files_in_report
 
-    @staticmethod
-    def write_report(json_report, output_path):
+    def write_report(self, json_report, output_file):
         try:
-            ReportParser.info("Writing report to {0}".format(output_path))
+            output_path =  Path.joinpath(self.output_directory, output_file)
+            ReportParser.info("Writing report to {0}/{1}".format(output_path, output_file))
+
+            # TODO: Add security checks around this?
+            Path(self.output_directory).mkdir(parents=True, exist_ok=True)
+
+            # TODO: Add security checks around this?
             with open(output_path, 'w') as fh:
                 json.dump(json_report, fh)
             return output_path
         except IOError:
-            ReportParser.error("Unable to write report at {0}".format(json_report))
+            ReportParser.error("Unable to write report at {0}".format(output_path))
         return None

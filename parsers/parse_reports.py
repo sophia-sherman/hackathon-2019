@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 import optparse         # allows OptionParser for command line options
 import sys              # allows sys.exit
-from pathlib import Path        # allows OS independent pathing
 
-from parse_charli_app_mobile import ReportParserCAM
-from parse_charli_app_service import ReportParserCAS
+from parsers.parse_charli_app_mobile import ReportParserCAM
+from parsers.parse_charli_app_service import ReportParserCAS
 
 
 def parse_report(service_name):
@@ -15,6 +14,7 @@ def parse_report(service_name):
     else:
         print ("Service {0} is not supported at this time".format(service_name))
         sys.exit(0)
+
     output = parser.parse_reports()
     if output:
         print("Report written to: {0}".format(output))

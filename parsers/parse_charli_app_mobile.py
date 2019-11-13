@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from pathlib import Path
-from parser_base import ReportParser
-import json
+from parsers.parser_base import ReportParser
 
 
 class ReportParserCAM(ReportParser):
@@ -26,14 +25,8 @@ class ReportParserCAM(ReportParser):
                 report_history.append(json_data)
 
         output_report =  self.build_report(report_history=report_history)
-        output_path = self.build_output_file_name(output_report=output_report)
-        return self.write_report(json_report=output_report, output_path=output_path)
-
-    def build_output_file_name(self, output_report):
-        report_date = output_report["report_date"]
-        output_file = "{0}_{1}.json".format(report_date, self.service)
-        output_location = Path.joinpath(self.output_directory, output_file)
-        return output_location
+        output_file = self.build_output_file_name(output_report=output_report)
+        return self.write_report(json_report=output_report, output_file=output_file)
 
     def build_report(self, report_history):
         json_report = {}
