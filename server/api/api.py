@@ -1,6 +1,9 @@
 from flask import Flask, escape, request
+from flask_cors import CORS
+import json
 
 app = Flask(__name__)
+CORS(app)
 
 projects = [
     {'key': 'charli-app-mobile'},
@@ -46,26 +49,16 @@ def get_metrics():
                 )
             if 'charli-app-mobile' in keys:
                 measures['measures'].append(
-                    {
-                        "service": "charlie-app-mobile",
-                        "report_date": "20191106_112411",
-                        "coverage_type": "jest",
-                        "report_history": [
-                            {
-                            "source_file": "20191106_091711-jest.txt",
-                            "source_date": "20191106_091711",
-                            "stmts": "44.45"
-                            },
-                            {
-                            "source_file": "20191105_081711-jest.txt",
-                            "source_date": "20191105_081711",
-                            "stmts": "33.29"
-                            }
-                        ]
-                    }
+                    retrieve_project_info()
                 )
             return measures
         else:
             return 'No project keys submitted', 200
     else:
         return 'No project keys submitted', 200
+
+
+def retrieve_project_info():
+    with open('../output_reports/charli-app-mobile/20191106_112411_charlie_app_mobile.json') as json_file:
+        data = json.load(json_file)
+        return data
