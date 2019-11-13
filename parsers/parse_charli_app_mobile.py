@@ -4,13 +4,15 @@ from parsers.parser_base import ReportParser
 
 
 class ReportParserCAM(ReportParser):
-    def __init__(self):
-        ReportParser.__init__(self)
+    def __init__(self, source_directory, output_directory):
+        ReportParser.__init__(self, source_directory, output_directory)
         self.service = "charli-app-mobile"
         self.file_pattern = "*-jest.txt"
         self.coverage_type = "jest"
 
-        self.root_directory = Path.joinpath(self.root_directory, self.service)
+        self.source_directory = Path(source_directory)
+        self.source_directory = Path.joinpath(self.source_directory, self.service)
+        self.output_directory = Path(output_directory)
         self.output_directory = Path.joinpath(self.output_directory, self.service)
 
     def parse_reports(self):
@@ -41,7 +43,11 @@ class ReportParserCAM(ReportParser):
         json_data = {}
         json_data['source_file'] = source_file.name
         json_data['source_date'] = ReportParser.extract_date_from_filename(source_file)
-        json_data['stmts'] = stmts
+        try:
+            json_data['stmts'] = float(stmts)
+        except ValueError:
+            ReportParser.error("Unable to convert {0} to float, setting to -1".format(stmts))
+            json_data['stmts'] = -1
         return json_data
 
     @staticmethod

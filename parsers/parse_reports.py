@@ -6,11 +6,13 @@ from parsers.parse_charli_app_mobile import ReportParserCAM
 from parsers.parse_charli_app_service import ReportParserCAS
 
 
-def parse_report(service_name):
+def parse_report(service_name, source_directory="parsers/data", output_directory="parsers/output_reports"):
+    print("Parsing (service) {0}, (source) {1}, (dest) {2}".format(service_name, source_directory, output_directory))
+
     if service_name == "charli-app-mobile":
-        parser = ReportParserCAM()
+        parser = ReportParserCAM(source_directory, output_directory)
     elif service_name == "charli-app-service":
-        parser = ReportParserCAS()
+        parser = ReportParserCAS(source_directory, output_directory)
     else:
         print ("Service {0} is not supported at this time".format(service_name))
         sys.exit(0)
@@ -23,11 +25,11 @@ def parse_report(service_name):
     return output
 
 
-def parse_reports():
+def parse_reports(source_directory="parsers/data", output_directory="parsers/output_reports"):
     output_paths = []
     print("Parsing all reports")
 
-    report_path = parse_report("charli-app-mobile")
+    report_path = parse_report("charli-app-mobile", source_directory, output_directory)
     if report_path:
         output_paths.append(report_path)
 
@@ -37,9 +39,16 @@ def parse_reports():
 
 def main():
     options = parse_options()
+    input_root = "parsers/data/"
+    if options.input_root:
+        input_root = options.input_root
+
+    output_root = "parsers/output_reports/"
+    if options.output_root:
+        output_root = options.output_root
 
     if options.service_name:
-        parse_report(options.service_name)
+        parse_report(options.service_name, source_directory=input_root, output_directory=output_root)
     else:
         parse_reports()
 
@@ -62,6 +71,10 @@ def parse_options():
     #   callback - call a specified function
     p.add_option('--service', '-s', action="store", dest="service_name", type="string",
                  help="Parse the report just for this service")
+    p.add_option('--input', '-i', action="store", dest="input_root", type="string",
+                 help="The root source of the reports")
+    p.add_option('--output', '-o', action="store", dest="output_root", type="string",
+                 help="The root source of the output")
     options, args = p.parse_args()
     return options
 

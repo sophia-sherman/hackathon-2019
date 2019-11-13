@@ -5,9 +5,9 @@ import datetime
 
 
 class ReportParser:
-    def __init__(self):
-        self.root_directory = Path("data/")
-        self.output_directory = Path("output_reports/")
+    def __init__(self, source_directory, output_directory):
+        self.source_directory = source_directory
+        self.output_directory = output_directory
         self.file_pattern = "*"
         self.service = "unknown"
 
@@ -46,11 +46,11 @@ class ReportParser:
         return "{0}_{1}.json".format(report_date, self.service)
 
     def get_all_reports(self):
-        ReportParser.info("Parsing reports at: {0}".format(self.root_directory))
+        ReportParser.info("Parsing reports at: {0}".format(self.source_directory))
 
-        files_in_report = ReportParser.get_files_by_pattern(self.root_directory, self.file_pattern)
+        files_in_report = ReportParser.get_files_by_pattern(self.source_directory, self.file_pattern)
         if not files_in_report or len(files_in_report) == 0:
-            ReportParser.error("No report files found in {0}".format(self.root_directory))
+            ReportParser.error("No report files found in {0}".format(self.source_directory))
 
         return files_in_report
 
