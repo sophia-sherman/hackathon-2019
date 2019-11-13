@@ -1,4 +1,4 @@
-# 2019 Cambial Hackathon
+# 2019 Cambia Hackathon
 One stop Quality Dashboard for developers and managers to be able to see how they are addressing quality concerns​
 
 ## Backend Services Gathering Metrics​
