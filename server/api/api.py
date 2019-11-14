@@ -29,7 +29,6 @@ def get_metrics():
         if "projectKeys" in args:
             keys = args["projectKeys"].split(" ")
             measures = {'measures': []}
-            measures['measures'].append(retrieve_jira_info_for_product())
             if 'charli-app-service' in keys:
                 measures['measures'].append(
                     retrieve_project_info('charli-app-service')
@@ -43,6 +42,12 @@ def get_metrics():
             return 'No project keys submitted', 200
     else:
         return 'No project keys submitted', 200
+
+@app.route('/bugs')
+def get_bugs():
+    measures = {'measures': []}
+    measures['measures'].append(retrieve_jira_info_for_product())
+    return measures
 
 
 def retrieve_project_info(projectKey):
