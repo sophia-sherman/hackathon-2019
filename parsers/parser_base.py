@@ -33,7 +33,7 @@ class ReportParser:
         file_stem = source_file.stem
         file_split = file_stem.split("-")
         try:
-            extracted_date = datetime.datetime.strptime(file_split[0], '%Y%m%d_%I%M%S')
+            extracted_date = datetime.datetime.strptime(file_split[0], '%Y%m%d_%H%M%S')
             formated_data = extracted_date.strftime("%Y-%m-%d-%H-%M-%S")
             return formated_data
         except IndexError:
