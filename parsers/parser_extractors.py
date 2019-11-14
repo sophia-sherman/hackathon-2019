@@ -1,6 +1,7 @@
 from parsers.parser_helpers import ParserHelpers
 from bs4 import BeautifulSoup   # HTML Parsing
 
+
 class ReportExtractors:
     # JEST
 
