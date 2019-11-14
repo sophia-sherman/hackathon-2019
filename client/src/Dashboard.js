@@ -114,7 +114,7 @@ export default class Dashboard extends Component {
                             </Layout>
                         </Layout>
                         <Layout style={{ width: 200 }}>
-                            <Content style={{ height: 200 }}>
+                            <Content style={{ height: 210 }}>
                             </Content>
                             <Content style={{ height: 310 }}>
                                 <Pane3 data={this.state.cam_coverage} type={this.state.cam_type}/>

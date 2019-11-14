@@ -48,15 +48,15 @@ const draw = (props) => {
         .call(d3.axisLeft(y));
 
     // Add the line
-    // svg.append("path")
-    //     .datum(data)
-    //     .attr("fill", "none")
-    //     .attr("stroke", "steelblue")
-    //     .attr("stroke-width", 1.5)
-    //     .attr("d", d3.line()
-    //         .x(function (d) { return x(d.source_date) })
-    //         .y(function (d) { return y(d.value) })
-    //     )
+    svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 1.5)
+        .attr("d", d3.line()
+            .x(function (d) { return x(d.source_date) })
+            .y(function (d) { return y(d.value) })
+        )
 
     svg.selectAll(".dot")
         .data(data)

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './pane2.css';
 import LineChartCAS from '../../charts/LineChart/linechartCAS';
-import LineChartCAM from '../../charts/LineChart/linechartCAM';
+import LineChartCAM from '../../charts/LineChart/linechart';
 
 export default class Pane2 extends Component {
     render() {
