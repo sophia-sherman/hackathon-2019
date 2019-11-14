@@ -70,7 +70,7 @@ class ReportParser:
             # TODO: Add security checks around this?
             with open(file_path, 'w') as fh:
                 json.dump(json_report, fh)
-            return output_path
+            return file_path
         except IOError:
             ReportParser.error("Unable to write report at {0}".format(file_path))
         return None
