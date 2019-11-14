@@ -1,0 +1,22 @@
+#pane3 {
+    height: 300px;
+    background-color: white;
+}
+
+.latest {
+    height: 265px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.percent {
+    font-size: 30px;
+    padding: 5px;
+}
+
+.anticon {
+    font-size: 60px;
+    color: #00FF00;
+}

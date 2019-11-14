@@ -1,0 +1,51 @@
+.ant-layout-header {
+    background-color: #f0f2f5;
+    padding: 24px 50px;
+    font-size: 30px;
+}
+
+.ant-layout-sider {
+    height: calc(100vh - 96px);
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.generic-label {
+    font-size: 20px;
+}
+
+.pane {
+    background: #fff;
+    border-style: solid;
+    border-color: #fff;
+    border-width: 1px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    /* box-shadow: 2px 2px 2px #dddddd; */
+}
+
+.header {
+    background-color: #eee;
+    margin: 5px;
+    padding-left: 10px;
+    padding-top: 4px;
+    border-radius: 5px;
+    height: 30px;
+}
+
+
+
+
+
+
+
+
+
