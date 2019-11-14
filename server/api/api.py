@@ -1,7 +1,7 @@
 from flask import Flask, escape, request
 from flask_cors import CORS
 import json
-from .parsers.parse_reports import parse_report
+from parsers.parse_reports import parse_report
 from .measures.jira import jira_issues
 
 app = Flask(__name__)
@@ -45,7 +45,7 @@ def get_metrics():
 
 
 def retrieve_project_info(projectKey):
-    report_path = parse_report(projectKey)
+    report_path = parse_report(projectKey, source_directory="parsers/data")
     with open(report_path) as json_file:
         data = json.load(json_file)
         return data

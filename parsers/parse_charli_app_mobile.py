@@ -1,16 +1,18 @@
 #!/usr/bin/env python
 from pathlib import Path
-from server.api.parsers.parser_base import ReportParser
+from parsers.parser_base import ReportParser
 
 
 class ReportParserCAM(ReportParser):
-    def __init__(self):
-        ReportParser.__init__(self)
+    def __init__(self, source_directory, output_directory):
+        ReportParser.__init__(self, source_directory, output_directory)
         self.service = "charli-app-mobile"
         self.file_pattern = "*-jest.txt"
         self.coverage_type = "jest"
 
-        self.root_directory = Path.joinpath(self.root_directory, self.service)
+        self.source_directory = Path(source_directory)
+        self.source_directory = Path.joinpath(self.source_directory, self.service)
+        self.output_directory = Path(output_directory)
         self.output_directory = Path.joinpath(self.output_directory, self.service)
 
     def parse_reports(self):
@@ -25,14 +27,8 @@ class ReportParserCAM(ReportParser):
                 report_history.append(json_data)
 
         output_report =  self.build_report(report_history=report_history)
-        output_path = self.build_output_file_name(output_report=output_report)
-        return self.write_report(json_report=output_report, output_path=output_path)
-
-    def build_output_file_name(self, output_report):
-        report_date = output_report["report_date"]
-        output_file = "{0}_{1}.json".format(report_date, self.service)
-        output_location = Path.joinpath(self.output_directory, output_file)
-        return output_location
+        output_file = self.build_output_file_name(output_report=output_report)
+        return self.write_report(json_report=output_report, output_file=output_file)
 
     def build_report(self, report_history):
         json_report = {}
@@ -47,7 +43,11 @@ class ReportParserCAM(ReportParser):
         json_data = {}
         json_data['source_file'] = source_file.name
         json_data['source_date'] = ReportParser.extract_date_from_filename(source_file)
-        json_data['stmts'] = stmts
+        try:
+            json_data['stmts'] = float(stmts)
+        except ValueError:
+            ReportParser.error("Unable to convert {0} to float, setting to -1".format(stmts))
+            json_data['stmts'] = -1
         return json_data
 
     @staticmethod
