@@ -9,8 +9,8 @@ class ReportParser:
     def __init__(self, source_directory, output_directory):
         self.source_directory = source_directory
         self.output_directory = output_directory
-        self.file_pattern = "*"
         self.service = "unknown"
+        self.coverage_type = "unknown"
 
     @staticmethod
     def info(data):
@@ -48,14 +48,14 @@ class ReportParser:
         formated_data = datetime_object.strftime("%Y%m%d_%H%M%S")
         return formated_data
 
-    def build_output_file_name(self, output_report):
+    def build_output_file_name(self, output_report, coverage_type):
         report_date = output_report["report_date"]
-        return "{0}_{1}.json".format(report_date, self.service)
+        return "{0}_{1}_{2}.json".format(report_date, self.service, coverage_type)
 
-    def get_all_reports(self):
+    def get_all_reports(self, file_pattern):
         ReportParser.info("Parsing reports at: {0}".format(self.source_directory.absolute()))
 
-        files_in_report = ReportParser.get_files_by_pattern(self.source_directory, self.file_pattern)
+        files_in_report = ReportParser.get_files_by_pattern(self.source_directory, file_pattern)
         if not files_in_report or len(files_in_report) == 0:
             ReportParser.error("No report files found in {0}".format(self.source_directory))
 
@@ -86,6 +86,14 @@ class ReportParser:
             ReportParser.error("Unable to extract float from: {0}".format(value))
         return -1
 
+    def build_report(self, report_history, coverage_type):
+        json_report = {}
+        json_report["service"] = self.service
+        json_report["report_date"] = ReportParser.get_timestamp()
+        json_report["coverage_type"] = coverage_type
+        json_report["report_history"] = report_history
+        return json_report
+
     def write_report(self, json_report, output_file):
         try:
             output_path = Path(os.path.dirname(__file__))
@@ -105,3 +113,4 @@ class ReportParser:
         except IOError:
             ReportParser.error("Unable to write report at {0}".format(file_path))
         return None
+
