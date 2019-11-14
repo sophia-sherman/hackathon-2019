@@ -33,6 +33,10 @@ def parse_reports(source_directory="data", output_directory="output_reports"):
     if report_path:
         output_paths.append(report_path)
 
+    report_path = parse_report("charli-app-service", source_directory, output_directory)
+    if report_path:
+        output_paths.append(report_path)
+
     print("Parsed reports complete {0}".format(output_paths))
     return output_paths
 
