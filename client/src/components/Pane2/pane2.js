@@ -1,19 +1,32 @@
 import React, { Component } from 'react';
 import './pane2.css';
-import LineChart from '../../charts/LineChart/linechart';
+import LineChartCAS from '../../charts/LineChart/linechartCAS';
+import LineChartCAM from '../../charts/LineChart/linechartCAM';
 
 export default class Pane2 extends Component {
     render() {
-        const {data} = this.props,
+        const {data, type} = this.props,
               width = 650,
               height = 250;
-        return (
-            <div id="pane2" className="pane" >
-                <div className='header'>Code Coverage</div>
-                <div style={{ overflowX: 'scroll',overflowY:'hidden' }}>
-                    <LineChart data={data} width={width} height={height}/>
+        if (type === 'jest') {
+            return (
+                <div id="pane2" className="pane" >
+                    <div className='header'>Code Coverage</div>
+                    <div style={{ overflowX: 'scroll',overflowY:'hidden' }}>
+                        <LineChartCAM data={data} width={width} height={height}/>
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        }
+        else {
+            return (
+                <div id="pane2" className="pane" >
+                    <div className='header'>Code Coverage</div>
+                    <div style={{ overflowX: 'scroll',overflowY:'hidden' }}>
+                        <LineChartCAS data={data} width={width} height={height}/>
+                    </div>
+                </div>
+            )
+        }  
     }
 }

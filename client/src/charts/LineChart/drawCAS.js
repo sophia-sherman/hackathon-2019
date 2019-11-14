@@ -6,11 +6,11 @@ const draw = (props) => {
     if (props.data !== null) {
         data = _.cloneDeep(props.data);
     }
-    d3.select('.linechart > *').remove();
+    d3.select('.linechart-cas > *').remove();
     let margin = { top: 20, right: 50, bottom: 60, left: 40 }
     const width = props.width - margin.left - margin.right;
     const height = props.height - margin.top - margin.bottom;
-    let svg = d3.select(".linechart")
+    let svg = d3.select(".linechart-cas")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -48,15 +48,15 @@ const draw = (props) => {
         .call(d3.axisLeft(y));
 
     // Add the line
-    // svg.append("path")
-    //     .datum(data)
-    //     .attr("fill", "none")
-    //     .attr("stroke", "steelblue")
-    //     .attr("stroke-width", 1.5)
-    //     .attr("d", d3.line()
-    //         .x(function (d) { return x(d.source_date) })
-    //         .y(function (d) { return y(d.value) })
-    //     )
+    svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 1.5)
+        .attr("d", d3.line()
+            .x(function (d) { return x(d.source_date) })
+            .y(function (d) { return y(d.value) })
+        )
 
     svg.selectAll(".dot")
         .data(data)
