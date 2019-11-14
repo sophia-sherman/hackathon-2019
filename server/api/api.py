@@ -31,11 +31,11 @@ def get_metrics():
             measures = {'measures': []}
             if 'charli-app-service' in keys:
                 measures['measures'].append(
-                    retrieve_project_info('charli-app-service')
+                    retrieve_coverage_info('charli-app-service')
                 )
             if 'charli-app-mobile' in keys:
                 measures['measures'].append(
-                    retrieve_project_info('charli-app-mobile')
+                    retrieve_coverage_info('charli-app-mobile')
                 )
             return measures
         else:
@@ -50,11 +50,43 @@ def get_bugs():
     return measures
 
 
-def retrieve_project_info(projectKey):
-    report_path = parse_report(projectKey, source_directory="parsers/data")
-    with open(report_path) as json_file:
-        data = json.load(json_file)
-        return data
+@app.route('/performance')
+def get_performance():
+    if request.args:
+        args = request.args
+
+        if "projectKeys" in args:
+            keys = args["projectKeys"].split(" ")
+            measures = {'measures': []}
+            if 'charli-app-service' in keys:
+                measures['measures'].append(
+                    retrieve_performance_info('charli-app-service')
+                )
+            return measures
+        else:
+            return 'No project keys submitted', 200
+    else:
+        return 'No project keys submitted', 200
+
+
+def retrieve_coverage_info(projectKey):
+    report_paths = parse_report(projectKey, source_directory="parsers/data")
+    for path in report_paths:
+        if ('cloverage' in path.stem) or ('jest' in path.stem):
+            with open(path) as json_file:
+                data = json.load(json_file)
+                return data
+
+
+def retrieve_performance_info(projectKey):
+    report_paths = parse_report(projectKey, source_directory="parsers/data")
+    for path in report_paths:
+        print(path.stem)
+        if 'gatling' in path.stem:
+            with open(path) as json_file:
+                print('Found file')
+                data = json.load(json_file)
+                return data
 
 
 def retrieve_jira_info_for_product():
