@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from pathlib import Path
-from parser_base import ReportParser
+from server.api.parsers.parser_base import ReportParser
 
 
 class ReportParserCAS(ReportParser):

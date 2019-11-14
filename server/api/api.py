@@ -1,6 +1,8 @@
 from flask import Flask, escape, request
 from flask_cors import CORS
 import json
+from .parsers.parse_reports import parse_report
+from .measures.jira import jira_issues
 
 app = Flask(__name__)
 CORS(app)
@@ -29,27 +31,11 @@ def get_metrics():
             measures = {'measures': []}
             if 'charli-app-service' in keys:
                 measures['measures'].append(
-                    {
-                        "service": "charlie-app-service",
-                        "report_date": "20191106_112411",
-                        "coverage_type": "cloverage",
-                        "report_history": [
-                            {
-                            "source_file": "20191106_091711-cloverage.html",
-                            "source_date": "20191106_091711",
-                            "stmts": "47.95"
-                            },
-                            {
-                            "source_file": "20191105_081711-cloverage.html",
-                            "source_date": "20191105_081711",
-                            "stmts": "23.29"
-                            }
-                        ]
-                    }
+                    retrieve_project_info('charli-app-service')
                 )
             if 'charli-app-mobile' in keys:
                 measures['measures'].append(
-                    retrieve_project_info()
+                    retrieve_project_info('charli-app-mobile')
                 )
             return measures
         else:
@@ -58,7 +44,8 @@ def get_metrics():
         return 'No project keys submitted', 200
 
 
-def retrieve_project_info():
-    with open('../output_reports/charli-app-mobile/20191106_112411_charlie_app_mobile.json') as json_file:
+def retrieve_project_info(projectKey):
+    report_path = parse_report(projectKey)
+    with open(report_path) as json_file:
         data = json.load(json_file)
         return data

@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 import optparse         # allows OptionParser for command line options
 import sys              # allows sys.exit
-from pathlib import Path        # allows OS independent pathing
 
-from parse_charli_app_mobile import ReportParserCAM
-from parse_charli_app_service import ReportParserCAS
+from server.api.parsers.parse_charli_app_mobile import ReportParserCAM
+from server.api.parsers.parse_charli_app_service import ReportParserCAS
 
 
 def parse_report(service_name):
