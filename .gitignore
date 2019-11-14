@@ -1,4 +1,6 @@
 .vscode/
+.idea/
+output_reports/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
