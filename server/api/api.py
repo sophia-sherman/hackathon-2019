@@ -29,6 +29,7 @@ def get_metrics():
         if "projectKeys" in args:
             keys = args["projectKeys"].split(" ")
             measures = {'measures': []}
+            measures['measures'].append(retrieve_jira_info_for_product())
             if 'charli-app-service' in keys:
                 measures['measures'].append(
                     retrieve_project_info('charli-app-service')
@@ -49,3 +50,15 @@ def retrieve_project_info(projectKey):
     with open(report_path) as json_file:
         data = json.load(json_file)
         return data
+
+
+def retrieve_jira_info_for_product():
+    jira = {
+        'open_critical_major_bugs': jira_issues.count_open_critical_major_issues(),
+        'open_data_quality_bugs': jira_issues.count_open_data_issues(),
+        'open_regressions': jira_issues.count_open_regression_issues(),
+        'opened_during_sprint': jira_issues.count_opened_issues_in_sprint(),
+        'closed_during_sprint': jira_issues.count_closed_issues_in_sprint(),
+        'total_open_bugs': jira_issues.count_open_issues()
+    }
+    return jira

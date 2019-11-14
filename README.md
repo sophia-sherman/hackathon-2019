@@ -19,3 +19,10 @@ One stop Quality Dashboard for developers and managers to be able to see how the
 ## Technologies​
 * Python with Flask​
 * React​
+
+Looking to replicate elements of:
+https://confluence.cambiahealth.com/confluence/display/SEAM/Sprint+Quality+Metrics
+
+https://confluence.healthsparq.net/display/JPT/Project+Seamless+Application
+
+https://confluence.cambiahealth.com/confluence/display/CCSE/Project+Seamless+Application
