@@ -34,7 +34,7 @@ class ReportParser:
         file_split = file_stem.split("-")
         try:
             extracted_date = datetime.datetime.strptime(file_split[0], '%Y%m%d_%H%M%S')
-            formated_data = extracted_date.strftime("%Y-%m-%d-%H-%M-%S")
+            formated_data = extracted_date.strftime("%Y-%m-%d")
             return formated_data
         except IndexError:
             ReportParser.error("Unable to extract a date from filename {0}".format(source_file))
