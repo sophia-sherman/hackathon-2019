@@ -32,9 +32,15 @@ class ReportParser:
     def extract_date_from_filename(source_file):
         file_stem = source_file.stem
         file_split = file_stem.split("-")
-        if not file_split or len(file_split) < 1:
-            return "bad_format"
-        return file_split[0]
+        try:
+            extracted_date = datetime.datetime.strptime(file_split[0], '%Y%m%d_%I%M%S')
+            formated_data = extracted_date.strftime("%Y-%m-%d-%H-%M-%S")
+            return formated_data
+        except IndexError:
+            ReportParser.error("Unable to extract a date from filename {0}".format(source_file))
+        except ValueError:
+            ReportParser.error("Unable to extract date format from {0}".format(source_file))
+        return "-1"
 
     @staticmethod
     def get_timestamp():
@@ -54,6 +60,31 @@ class ReportParser:
             ReportParser.error("No report files found in {0}".format(self.source_directory))
 
         return files_in_report
+
+    @staticmethod
+    def format_report_field(source_file, value_display, value):
+        json_data = {}
+        json_data['source_file'] = source_file.name
+        json_data['source_date'] = ReportParser.extract_date_from_filename(source_file)
+        try:
+            json_data[value_display] = float(value)
+        except ValueError:
+            ReportParser.error("Unable to convert {0} to float, setting to -1".format(value))
+            json_data[value_display] = -1
+        return json_data
+
+    @staticmethod
+    def format_percent_to_float(value):
+        # current format: 47.95 %
+        extracted_value = value.split(' ')
+        try:
+            new_value = float(extracted_value[0])
+            return new_value
+        except ValueError:
+            ReportParser.error("Unable to extract float from: {0}".format(value))
+        except IndexError:
+            ReportParser.error("Unable to extract float from: {0}".format(value))
+        return -1
 
     def write_report(self, json_report, output_file):
         try:
