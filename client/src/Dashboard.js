@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
-import axios from 'axios'; 
+import axios from 'axios';
+import LogoWhite from './images/randi-white.png';
 import Pane2 from './components/Pane2/pane2';
 import Pane3 from './components/Pane3/pane3';
 import Indicator from './components/Indicator/indicator';
@@ -127,6 +128,7 @@ export default class Dashboard extends Component {
                         </Layout>
                         <Layout style={{ width: 400 }}>
                             <Content style={{ height: 220 }}>
+                                <img className="logo" src={LogoWhite}/>
                             </Content>
                             <Content style={{ height: 320 }}>
                                 <Pane3 data={this.state.cam_coverage} type={this.state.cam_type}/>

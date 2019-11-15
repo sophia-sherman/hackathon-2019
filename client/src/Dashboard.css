@@ -4,10 +4,6 @@
     font-size: 30px;
 }
 
-.ant-layout-sider {
-    /* height: calc(100vh - 96px); */
-}
-
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -39,6 +35,10 @@
     padding-top: 4px;
     border-radius: 5px;
     height: 30px;
+}
+
+.logo {
+    padding: 20px;
 }
 
 
