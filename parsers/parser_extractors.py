@@ -1,4 +1,5 @@
 from parsers.parser_helpers import ParserHelpers
+from parsers.parser_logger import ParserLogger
 from bs4 import BeautifulSoup   # HTML Parsing
 
 
@@ -10,7 +11,7 @@ class ReportExtractors:
         report_history = []
 
         for file in report_files:
-            ParserHelpers.info("{0}".format(file))
+            ParserLogger().info("{0}".format(file))
             value = ReportExtractors.jest_extract_column(file, 1)
             if value:
                 json_data = ParserHelpers.format_report_field_float(source_file=file, value_display='value', value=value)
@@ -30,11 +31,11 @@ class ReportExtractors:
                         value = line.split(line_delim)[column_number].strip()
                         return value
                     line = fh.readline()
-                ParserHelpers.error("Pattern {0} not found in file {1}".format(line_pattern, file_path))
+                ParserLogger().error("Pattern {0} not found in file {1}".format(line_pattern, file_path))
         except IOError:
-            ParserHelpers.error("Unable to open report at {0}".format(file_path))
+            ParserLogger().error("Unable to open report at {0}".format(file_path))
         except IndexError:
-            ParserHelpers.error("Unable to find column {0} in file: {1}".format(column_number, file_path))
+            ParserLogger().error("Unable to find column {0} in file: {1}".format(column_number, file_path))
         return None
 
     # CLOVERAGE
@@ -44,7 +45,7 @@ class ReportExtractors:
         report_history = []
 
         for file in report_files:
-            ParserHelpers.info("{0}".format(file))
+            ParserLogger().info("{0}".format(file))
             percent_value = ReportExtractors.cloverage_extract_field(file_path=file)
             if percent_value:
                 value = ParserHelpers.format_percent_to_float(percent_value)
@@ -67,11 +68,11 @@ class ReportExtractors:
                     for td in tds:
                         if td.text == "Totals:":
                             return list(tr.find_all('td', {"class": td_class}))[td_index].text
-            ParserHelpers.error("Field <{0}><{1}> not found in file {2}".format(tr_field, td_class, file_path))
+            ParserLogger().error("Field <{0}><{1}> not found in file {2}".format(tr_field, td_class, file_path))
         except IOError:
-            ParserHelpers.error("Unable to open report at {0}".format(file_path))
+            ParserLogger().error("Unable to open report at {0}".format(file_path))
         except IndexError:
-            ParserHelpers.error("File {0} was not formatted as expected, field not found".format(file_path))
+            ParserLogger().error("File {0} was not formatted as expected, field not found".format(file_path))
         return None
 
     # GATLING
@@ -81,7 +82,7 @@ class ReportExtractors:
         report_history = []
 
         for file in report_files:
-            ParserHelpers.info("{0}".format(file))
+            ParserLogger().info("{0}".format(file))
             request_mean = ReportExtractors.gatling_get_line(file_path=file, label="mean requests/sec")
             response_mean = ReportExtractors.gatling_get_line(file_path=file, label="mean response time")
             ko_percent = ReportExtractors.gatling_get_line(file_path=file, label="failed")
@@ -106,7 +107,7 @@ class ReportExtractors:
                     if label in line:
                         return line
                     line = fh.readline()
-                ParserHelpers.error("Label {0} not found in file {1}".format(line, file_path))
+                ParserLogger().error("Label {0} not found in file {1}".format(line, file_path))
         except IOError:
-            ParserHelpers.error("Unable to open report at {0}".format(file_path))
+            ParserLogger().error("Unable to open report at {0}".format(file_path))
         return None

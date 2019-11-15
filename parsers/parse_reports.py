@@ -1,33 +1,33 @@
 #!/usr/bin/env python
 import optparse         # allows OptionParser for command line options
 import sys              # allows sys.exit
-
 from parsers.parse_charli_app_mobile import ReportParserCAM
 from parsers.parse_charli_app_service import ReportParserCAS
+from parsers.parser_logger import ParserLogger
 
 
 def parse_report(service_name, source_directory="data", output_directory="output_reports"):
-    print("Parsing (service) {0}, (source) {1}, (dest) {2}".format(service_name, source_directory, output_directory))
+    ParserLogger().info("** Parsing (service) {0}, (source) {1}, (dest) {2}".format(service_name, source_directory, output_directory))
 
     if service_name == "charli-app-mobile":
         parser = ReportParserCAM(source_directory, output_directory)
     elif service_name == "charli-app-service":
         parser = ReportParserCAS(source_directory, output_directory)
     else:
-        print ("Service {0} is not supported at this time".format(service_name))
+        ParserLogger().info("Service {0} is not supported at this time".format(service_name))
         sys.exit(0)
 
     output = parser.parse_reports()
     if output:
-        print("Report written to: {0}".format(output))
+        ParserLogger().info("Report written to: {0}".format(output))
     else:
-        print("Error: unable to write a report for {0}".format(service_name))
+        ParserLogger().info("Error: unable to write a report for {0}".format(service_name))
     return output
 
 
 def parse_reports(source_directory="data", output_directory="output_reports"):
     output_paths = []
-    print("Parsing all reports")
+    ParserLogger().info("Parsing all reports")
 
     report_path = parse_report("charli-app-mobile", source_directory, output_directory)
     if report_path:
@@ -37,7 +37,7 @@ def parse_reports(source_directory="data", output_directory="output_reports"):
     if report_path:
         output_paths.append(report_path)
 
-    print("Parsed reports complete {0}".format(output_paths))
+    ParserLogger().info("Parsed reports complete {0}".format(output_paths))
     return output_paths
 
 
@@ -50,7 +50,7 @@ def main():
     output_root = "output_reports/"
     if options.output_root:
         output_root = options.output_root
-    print("(input_root) {0} (output_report) {1}".format(input_root, output_root))
+    ParserLogger().info("(input_root) {0} (output_report) {1}".format(input_root, output_root))
 
     if options.service_name:
         parse_report(options.service_name, source_directory=input_root, output_directory=output_root)

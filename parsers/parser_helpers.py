@@ -1,16 +1,9 @@
 import datetime
 import re                       # regular expressions (string parsing)
+from parsers.parser_logger import ParserLogger
 
 
 class ParserHelpers:
-    @staticmethod
-    def info(data):
-        print(data)
-
-    @staticmethod
-    def error(data):
-        print(data)
-
     @staticmethod
     def format_percent_to_float(value):
         # current format: 47.95 %
@@ -19,9 +12,9 @@ class ParserHelpers:
             new_value = float(extracted_value[0])
             return new_value
         except ValueError:
-            ParserHelpers.error("Unable to extract float from: {0}".format(value))
+            ParserLogger().error("Unable to extract float from: {0}".format(value))
         except IndexError:
-            ParserHelpers.error("Unable to extract float from: {0}".format(value))
+            ParserLogger().error("Unable to extract float from: {0}".format(value))
         return -1
 
     @staticmethod
@@ -40,9 +33,9 @@ class ParserHelpers:
             extracted_date = datetime.datetime.strptime(file_split[0], '%Y%m%d_%H%M%S')
             return extracted_date
         except IndexError:
-            ParserHelpers.error("Unable to extract a date from filename {0}".format(source_file))
+            ParserLogger().error("Unable to extract a date from filename {0}".format(source_file))
         except ValueError:
-            ParserHelpers.error("Unable to extract date format from {0}".format(source_file))
+            ParserLogger().error("Unable to extract date format from {0}".format(source_file))
         return None
 
     @staticmethod
@@ -57,7 +50,7 @@ class ParserHelpers:
             output = float(src)
             return output
         except ValueError:
-            ParserHelpers.error("Unable to convert {0} to float, setting to -1.0".format(src))
+            ParserLogger().error("Unable to convert {0} to float, setting to -1.0".format(src))
         return -1.0
 
     @staticmethod
@@ -83,4 +76,4 @@ class ParserHelpers:
             float_value = ParserHelpers.safe_string_to_float(extracted_value)
             return float_value
         except AttributeError:
-            ParserHelpers.error("Unable to extract values from: {0}".format(src_string))
+            ParserLogger().error("Unable to extract values from: {0}".format(src_string))

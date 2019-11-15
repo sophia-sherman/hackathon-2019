@@ -4,6 +4,7 @@ import json
 import os
 from parsers.parser_helpers import ParserHelpers
 from parsers.parser_extractors import ReportExtractors
+from parsers.parser_logger import ParserLogger
 import datetime
 import dateutil.relativedelta
 
@@ -23,13 +24,13 @@ class ReportParser:
         return list(path.glob(pattern))
 
     def get_all_reports(self, file_pattern):
-        ParserHelpers.info("Parsing reports at: {0}".format(self.source_directory.absolute()))
+        ParserLogger().info("Parsing reports at: {0}".format(self.source_directory.absolute()))
 
         files_in_report = ReportParser.get_files_by_pattern(self.source_directory, file_pattern)
         files_in_report = ReportParser.keep_reports_by_time_block(file_list=files_in_report, months_to_keep=2)
 
         if not files_in_report or len(files_in_report) == 0:
-            ParserHelpers.error("No report files found in {0}".format(self.source_directory))
+            ParserLogger().error("No report files found in {0}".format(self.source_directory))
 
         return files_in_report
 
@@ -71,7 +72,7 @@ class ReportParser:
             Path(output_path).mkdir(parents=True, exist_ok=True)
 
             file_path = Path.joinpath(output_path, output_file)
-            ParserHelpers.info("Writing report to {0}/{1}".format(file_path, output_file))
+            ParserLogger().info("Writing report to {0}/{1}".format(file_path, output_file))
 
 
             # TODO: Add security checks around this?
@@ -79,7 +80,7 @@ class ReportParser:
                 json.dump(json_report, fh)
             return file_path
         except IOError:
-            ParserHelpers.error("Unable to write report at {0}".format(file_path))
+            ParserLogger().error("Unable to write report at {0}".format(file_path))
         return None
 
     # GENERATORS
