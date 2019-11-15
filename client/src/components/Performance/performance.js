@@ -35,7 +35,7 @@ export default class Performance extends Component {
         ];
         return (
             <div id="perf" className="pane">
-                <div className="header">Jira Bugs</div>
+                <div className="header">Performance Metrics</div>
                 <Table columns={columns} dataSource={dataSource} pagination={false}  />
             </div>
         )
