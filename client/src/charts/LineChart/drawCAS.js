@@ -28,11 +28,10 @@ const draw = (props) => {
         xRange = xExtent[1] - xExtent[0];
     
     var x = d3.scaleTime().range([0, width]);
-    // x.domain([xExtent[0] - (xRange * .5), xExtent[1] + (xRange * .05)]);
     x.domain(d3.extent(data, function(d) { return d.source_date; }));
 
     var y = d3.scaleLinear().range([height, 0]);
-    y.domain([d3.min(data, function(d) { return d.value; }) - 5, 100]);
+    y.domain([d3.min(data, function(d) { return d.value; }) - 5, 60]);
     svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")

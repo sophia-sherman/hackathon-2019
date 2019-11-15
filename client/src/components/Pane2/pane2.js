@@ -6,7 +6,7 @@ import LineChartCAM from '../../charts/LineChart/linechart';
 export default class Pane2 extends Component {
     render() {
         const {data, type} = this.props,
-              width = 650,
+              width = 800,
               height = 250;
         if (type === 'jest') {
             return (
