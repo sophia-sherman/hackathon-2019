@@ -5,7 +5,7 @@ import LineChartPerf from '../../charts/LineChart/linechartPerf';
 export default class Linegraph extends Component {
     render() {
         const {data} = this.props,
-              width = 800,
+              width = 600,
               height = 250;
         return (
             <div id="perf-line" className="pane" >

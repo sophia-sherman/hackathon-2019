@@ -6,12 +6,12 @@ import LineChartCAM from '../../charts/LineChart/linechart';
 export default class Pane2 extends Component {
     render() {
         const {data, type} = this.props,
-              width = 800,
+              width = 600,
               height = 250;
         if (type === 'jest') {
             return (
                 <div id="pane2" className="pane" >
-                    <div className='header'>Code Coverage</div>
+                    <div className='header'>Code Coverage Trend</div>
                     <div style={{ overflowX: 'scroll',overflowY:'hidden' }}>
                         <LineChartCAM data={data} width={width} height={height}/>
                     </div>
@@ -21,7 +21,7 @@ export default class Pane2 extends Component {
         else {
             return (
                 <div id="pane2" className="pane" >
-                    <div className='header'>Code Coverage</div>
+                    <div className='header'>Code Coverage Trend</div>
                     <div style={{ overflowX: 'scroll',overflowY:'hidden' }}>
                         <LineChartCAS data={data} width={width} height={height}/>
                     </div>

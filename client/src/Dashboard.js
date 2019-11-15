@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
-import axios from 'axios';
+import axios from 'axios'; 
 import Pane2 from './components/Pane2/pane2';
 import Pane3 from './components/Pane3/pane3';
+import Indicator from './components/Indicator/indicator';
 import JiraBugs from './components/JiraBugs/jirabugs';
 import Performance from './components/Performance/performance';
 import Linegraph from './components/Performance/linegraph';
@@ -54,7 +55,7 @@ export default class Dashboard extends Component {
         }))
         .catch((error) => {
             alert(error);
-            alert("There is an error in API call.");
+            alert("There is an error in the API call.");
         });
     }
 
@@ -135,6 +136,18 @@ export default class Dashboard extends Component {
                             </Content>
                             <Content style={{ height: 320 }}>
                                 <Performance data={this.state.perf_metrics}/>
+                            </Content>
+                        </Layout>
+                        <Layout style={{ width: 400 }}>
+                            <Content style={{ height: 220 }}>
+                            </Content>
+                            <Content style={{ height: 320 }}>
+                                <Indicator type={this.state.cam_type}/>
+                            </Content>
+                            <Content style={{ height: 320 }}>
+                                <Indicator data={this.state.cas_coverage} type={this.state.cas_type}/>
+                            </Content>
+                            <Content style={{ height: 320 }}>
                             </Content>
                         </Layout>
                     </Layout>

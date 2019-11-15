@@ -1,0 +1,27 @@
+#indicator {
+    height: 310px;
+    background-color: white;
+}
+
+.latest {
+    height: 265px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.indicator-percent {
+    font-size: 50px;
+    padding: 5px;
+}
+
+.anticon-arrow-up {
+    font-size: 60px;
+    color: #00FF00;
+}
+
+.anticon-arrow-down {
+    font-size: 60px;
+    color: red;
+}
