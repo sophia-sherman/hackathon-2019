@@ -1,0 +1,183 @@
+-------------------------------------------------|----------|----------|----------|----------|-------------------|
+File                                             |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+-------------------------------------------------|----------|----------|----------|----------|-------------------|
+All files                                        |    42.15 |    37.95 |    23.34 |    48.55 |                   |
+ src                                             |    60.61 |    31.25 |    33.33 |    60.61 |                   |
+  build_params.ts                                |    60.61 |    31.25 |    33.33 |    60.61 |... 60,62,64,66,68 |
+ src/api                                         |       28 |     5.41 |     4.98 |     29.2 |                   |
+  app_data_gql.ts                                |    76.19 |      100 |        0 |    91.43 |... 1071,1157,1184 |
+  client.ts                                      |    18.34 |     7.39 |     3.66 |    19.03 |... 2243,2249,2250 |
+  mock_app_data.ts                               |      100 |      100 |      100 |      100 |                   |
+  mock_chat.ts                                   |     3.13 |        0 |        0 |     3.28 |... 1081,1098,1106 |
+  mock_client.ts                                 |    41.53 |        0 |    11.25 |    41.53 |... 1825,1831,1844 |
+ src/assets                                      |      100 |      100 |      100 |      100 |                   |
+  app_strings.ts                                 |      100 |      100 |      100 |      100 |                   |
+ src/modules/android_back_button                 |       50 |      100 |        0 |      100 |                   |
+  android_back_button_actions.ts                 |       50 |      100 |        0 |      100 |                   |
+ src/modules/bill_payments                       |    73.33 |       80 |       40 |    90.91 |                   |
+  bill_payments_actions.ts                       |     62.5 |      100 |       25 |      100 |                   |
+  bill_payments_reducer.ts                       |    85.71 |       80 |      100 |    85.71 |                12 |
+ src/modules/bill_service_details                |       70 |       75 |    33.33 |    77.78 |                   |
+  bill_service_details_actions.ts                |       50 |      100 |        0 |    66.67 |                16 |
+  bill_service_details_reducer.ts                |    83.33 |       75 |      100 |    83.33 |                10 |
+ src/modules/bills                               |    33.16 |    35.48 |    21.43 |    33.33 |                   |
+  bills_actions.ts                               |    56.25 |      100 |     12.5 |    72.73 |           9,52,63 |
+  bills_client.ts                                |    36.54 |    36.36 |    13.04 |    33.33 |... 52,154,160,161 |
+  bills_reducer.ts                               |    85.71 |       80 |      100 |    85.71 |                 9 |
+  bills_sagas.ts                                 |    25.62 |       20 |       40 |    25.71 |... 61,262,265,266 |
+ src/modules/care_circle                         |    20.98 |     9.76 |       10 |    23.35 |                   |
+  care_circle_actions.ts                         |    53.13 |      100 |     6.25 |    66.67 |... 18,140,153,165 |
+  care_circle_sagas.ts                           |    15.36 |     5.13 |      8.7 |    16.74 |... 42,848,858,868 |
+  care_teams_reducer.ts                          |      100 |      100 |      100 |      100 |                   |
+ src/modules/check_network_provider_search       |    41.95 |    38.18 |    23.81 |     44.2 |                   |
+  check_network_provider_search_actions.ts       |    58.33 |      100 |    16.67 |    85.71 |            70,101 |
+  check_network_provider_search_sagas.ts         |    37.32 |    34.69 |       25 |    37.07 |... 92,393,394,397 |
+  network_results_reducer.ts                     |       75 |    66.67 |      100 |       75 |             10,20 |
+ src/modules/condition                           |    63.49 |    57.14 |       40 |    70.59 |                   |
+  condition_actions.ts                           |    64.29 |      100 |    28.57 |      100 |                   |
+  condition_reducer.ts                           |     87.5 |    83.33 |      100 |     87.5 |                15 |
+  condition_sagas.ts                             |    58.54 |     37.5 |       50 |       60 |... 39,42,45,46,63 |
+ src/modules/config                              |    63.64 |       60 |    33.33 |    77.78 |                   |
+  config_actions.ts                              |       50 |      100 |        0 |      100 |                   |
+  config_reducer.ts                              |    71.43 |       60 |      100 |    71.43 |             10,12 |
+ src/modules/eligibility                         |       50 |     37.5 |     7.14 |    66.67 |                   |
+  eligibility_actions.ts                         |       50 |      100 |        0 |    76.47 |    24,102,117,132 |
+  eligibility_reducer.ts                         |       50 |     37.5 |      100 |       50 |    10,12,14,16,18 |
+ src/modules/financials                          |     42.5 |    17.39 |       10 |    44.74 |                   |
+  financials_actions.ts                          |       50 |      100 |        0 |    56.25 |... 6,58,70,82,102 |
+  financials_reducer.ts                          |    36.36 |    17.39 |      100 |    36.36 |... 61,71,74,82,91 |
+ src/modules/geolocation                         |    47.22 |       30 |     7.69 |    60.71 |                   |
+  geolocation_actions.ts                         |       50 |      100 |        0 |       75 |      15,26,58,114 |
+  geolocation_reducer.ts                         |    41.67 |       30 |      100 |    41.67 |... 17,19,21,23,25 |
+ src/modules/history                             |    63.16 |      100 |    33.33 |    63.16 |                   |
+  history_reducer_utils.ts                       |    63.16 |      100 |    33.33 |    63.16 |... 6,80,88,95,102 |
+ src/modules/link_context                        |    55.32 |    64.71 |       25 |    63.41 |                   |
+  link_context_actions.ts                        |       50 |      100 |        0 |      100 |                   |
+  link_context_reducer.ts                        |    58.33 |    71.43 |      100 |    58.33 |    27,32,39,43,50 |
+  link_context_reducer_utils.ts                  |       56 |       60 |       50 |    58.33 |... 74,75,76,78,81 |
+ src/modules/linkable_services                   |       75 |       75 |       50 |    85.71 |                   |
+  linkable_services_actions.ts                   |       50 |      100 |        0 |      100 |                   |
+  linkable_services_reducer.ts                   |    83.33 |       75 |      100 |    83.33 |                10 |
+ src/modules/med_savvy                           |    26.83 |    19.51 |    20.51 |    30.08 |                   |
+  med_savvy_actions.ts                           |    54.17 |      100 |     8.33 |    70.59 |  18,48,79,109,123 |
+  med_savvy_client.ts                            |       50 |        0 |       20 |    53.33 |... 23,26,32,38,39 |
+  med_savvy_sagas.ts                             |    20.59 |     12.9 |    23.81 |    22.84 |... 62,463,471,474 |
+  research_results_reducer.ts                    |    85.71 |       80 |      100 |    85.71 |                12 |
+ src/modules/oauth                               |       20 |        0 |        0 |    23.76 |                   |
+  oauth_actions.ts                               |       50 |      100 |        0 |       75 |             20,65 |
+  oauth_sagas.ts                                 |    16.67 |        0 |        0 |    19.35 |... 27,229,233,244 |
+ src/modules/pager                               |    48.89 |    33.33 |     5.56 |    62.86 |                   |
+  pager_actions.ts                               |       50 |      100 |        0 |    70.83 |... 19,130,141,156 |
+  pager_reducer.ts                               |    45.45 |    33.33 |      100 |    45.45 | 13,19,24,34,44,49 |
+ src/modules/params                              |    72.41 |       75 |       50 |    72.41 |                   |
+  params_actions.ts                              |       50 |      100 |        0 |       50 |       16,30,44,58 |
+  params_reducer.ts                              |    80.95 |       75 |      100 |    80.95 |       23,38,53,68 |
+ src/modules/prescriptions                       |     37.5 |    47.62 |    23.53 |       40 |                   |
+  prescriptions_actions.ts                       |       50 |      100 |        0 |      100 |                   |
+  prescriptions_sagas.ts                         |    37.39 |    47.62 |       25 |    39.68 |... 56,557,564,565 |
+ src/modules/provider_results                    |       50 |      100 |        0 |    66.67 |                   |
+  provider_results_actions.ts                    |       50 |      100 |        0 |    66.67 |                 9 |
+ src/modules/provider_specialty_search           |    53.85 |    31.58 |       25 |    56.94 |                   |
+  provider_specialty_search_actions.ts           |       50 |      100 |        0 |    71.43 |             20,47 |
+  provider_specialty_search_sagas.ts             |    46.77 |    24.24 |    16.67 |    48.98 |... 39,159,160,162 |
+  specialty_search_client.ts                     |    78.95 |       80 |       60 |       75 |       29,38,44,45 |
+ src/modules/push_notification                   |    54.29 |    29.41 |       20 |    57.58 |                   |
+  push_notification_actions.ts                   |       50 |      100 |        0 |    58.33 |    13,29,47,63,77 |
+  push_notification_reducer.ts                   |    71.43 |       60 |      100 |    71.43 |             10,12 |
+  push_notification_utils.ts                     |       50 |    16.67 |       50 |       50 |... 31,34,35,37,58 |
+ src/modules/security                            |    46.15 |       30 |     12.5 |       60 |                   |
+  security_actions.ts                            |       50 |      100 |        0 |     87.5 |                46 |
+  security_reducer.ts                            |    41.67 |       30 |      100 |    41.67 |7,9,11,13,19,24,29 |
+ src/modules/show_already_connected_health_modal |       75 |       75 |       50 |    85.71 |                   |
+  show_already_connected_health_modal_actions.ts |       50 |      100 |        0 |      100 |                   |
+  show_already_connected_health_modal_reducer.ts |    83.33 |       75 |      100 |    83.33 |                10 |
+ src/modules/wallet                              |       60 |       75 |     12.5 |       80 |                   |
+  wallet_actions.ts                              |       50 |      100 |        0 |    77.78 |             32,89 |
+  wallet_reducer.ts                              |    83.33 |       75 |      100 |    83.33 |                10 |
+ src/redux                                       |    62.44 |    64.29 |    21.74 |    65.13 |                   |
+  core.ts                                        |    69.16 |       75 |    27.27 |    73.74 |... 2679,2686,2691 |
+  selectors.ts                                   |     55.1 |        0 |    16.67 |    56.25 |... 29,233,237,241 |
+ src/redux/actions                               |    66.06 |     8.33 |     8.53 |    90.36 |                   |
+  index.ts                                       |    66.06 |     8.33 |     8.53 |    90.36 |... 2959,2968,3011 |
+ src/redux/reducers                              |    74.41 |    54.39 |      100 |    74.41 |                   |
+  activity_tag_reducer.ts                        |    71.43 |       60 |      100 |    71.43 |             11,13 |
+  available_benefits_reducer.ts                  |    85.71 |       80 |      100 |    85.71 |                10 |
+  chat_reducer.ts                                |    54.84 |    26.32 |      100 |    54.84 |... 2,44,46,48,113 |
+  connection_status_reducer.ts                   |    83.33 |       75 |      100 |    83.33 |                10 |
+  error_reducer.ts                               |    85.71 |       80 |      100 |    85.71 |                 9 |
+  features_reducer.ts                            |    83.33 |       75 |      100 |    83.33 |                10 |
+  forgot_pw_stage_reducer.ts                     |    83.33 |       75 |      100 |    83.33 |                10 |
+  history_items_reducer.ts                       |    58.82 |    43.75 |      100 |    58.82 |... 29,34,38,40,44 |
+  legal_reducer.ts                               |    83.33 |       75 |      100 |    83.33 |                10 |
+  linked_accounts_reducer.ts                     |    85.71 |       80 |      100 |    85.71 |                10 |
+  maintenance_status_reducer.ts                  |     62.5 |       50 |      100 |     62.5 |          10,12,14 |
+  med_savvy_reducer.ts                           |       75 |    66.67 |      100 |       75 |             10,20 |
+  notes_reducer.ts                               |    45.45 |    33.33 |      100 |    45.45 | 10,12,14,16,21,23 |
+  onboarding_reducer.ts                          |    83.33 |       75 |      100 |    83.33 |                10 |
+  onboarding_stage_reducer.ts                    |      100 |      100 |      100 |      100 |                   |
+  overlay_reducer.ts                             |    77.78 |    71.43 |      100 |    77.78 |              9,11 |
+  prescriptions_reducer.ts                       |    69.23 |    53.85 |      100 |    69.23 |       17,24,28,30 |
+  profile_reducer.ts                             |    66.67 |    57.14 |      100 |    66.67 |          10,14,16 |
+  providers_reducer.ts                           |    47.06 |    35.29 |      100 |    47.06 |... 31,37,39,41,45 |
+  root_reducer.ts                                |    98.28 |       50 |      100 |    98.28 |               119 |
+  session_reducer.ts                             |    77.78 |    71.43 |      100 |    77.78 |             19,21 |
+  settings_beta_reducer.ts                       |    83.33 |       75 |      100 |    83.33 |                10 |
+  show_connected_subjects_modal_reducer.ts       |    83.33 |       75 |      100 |    83.33 |                10 |
+  show_health_modal_reducer.ts                   |    83.33 |       75 |      100 |    83.33 |                10 |
+  show_push_consent_modal_reducer.ts             |    83.33 |       75 |      100 |    83.33 |                10 |
+  spinner_reducer.ts                             |      100 |      100 |      100 |      100 |                   |
+  subjects_reducer.ts                            |    71.43 |       60 |      100 |    71.43 |             10,12 |
+  tips_reducer.ts                                |    55.56 |       50 |      100 |    55.56 |       12,16,18,20 |
+  tmp_pw_reducer.ts                              |    83.33 |       75 |      100 |    83.33 |                 7 |
+  update_email_reducer.ts                        |       60 |     37.5 |      100 |       60 |       17,19,20,25 |
+  view_reducer.ts                                |     62.5 |     37.5 |      100 |     62.5 |... 26,31,36,38,46 |
+ src/redux/sagas                                 |    22.96 |    11.22 |     7.36 |    25.13 |                   |
+  bootstrap_sagas.ts                             |    23.53 |        0 |        0 |    25.81 |... 53,56,59,60,64 |
+  chat_sagas.ts                                  |    14.07 |        0 |        0 |    16.03 |... 23,724,729,738 |
+  data_sagas.ts                                  |    25.71 |        0 |        0 |    29.03 |... 44,150,152,153 |
+  error_sagas.ts                                 |    83.33 |      100 |       75 |    83.33 |          37,38,39 |
+  history_sagas.ts                               |    55.38 |       50 |    30.77 |    56.52 |... 90,291,323,341 |
+  home_sagas.ts                                  |       25 |        0 |        0 |    29.03 |... 51,53,66,67,68 |
+  legal_sagas.ts                                 |    27.27 |      100 |        0 |    33.33 |... 30,32,33,34,43 |
+  maintenance_sagas.ts                           |    31.03 |      100 |        0 |    33.33 |... 37,43,45,48,52 |
+  notes_saga.ts                                  |       10 |        0 |        0 |     11.9 |... 79,382,391,392 |
+  onboarding_sagas.ts                            |    20.38 |    22.22 |     3.33 |    21.92 |... 41,842,843,844 |
+  profile_sagas.ts                               |    17.81 |        0 |        0 |    20.31 |... 08,317,321,325 |
+  providers_sagas.ts                             |    26.11 |    45.45 |     12.5 |    28.35 |... 63,464,465,489 |
+  scenes_sagas.ts                                |      100 |      100 |      100 |      100 |                   |
+  session_sagas.ts                               |    30.51 |        0 |       25 |    32.73 |... ,93,96,101,102 |
+  terms_and_conditions_sagas.ts                  |    24.39 |        0 |        0 |    28.57 |... 62,63,67,70,74 |
+  tips_sagas.ts                                  |    11.36 |        0 |        0 |     12.5 |... 99,303,304,310 |
+ src/util                                        |    87.25 |     73.5 |    83.25 |    87.24 |                   |
+  app_data_utils.ts                              |    86.49 |    33.93 |    81.82 |    87.32 |... 84,285,287,311 |
+  available_benefits_utils.ts                    |      100 |      100 |      100 |      100 |                   |
+  back_utils.ts                                  |      100 |      100 |      100 |      100 |                   |
+  chat_utils.ts                                  |      100 |      100 |      100 |      100 |                   |
+  error_utils.ts                                 |      100 |      100 |      100 |      100 |                   |
+  format_utils.ts                                |      100 |      100 |      100 |      100 |                   |
+  history_utils.ts                               |    85.12 |       60 |    82.05 |    84.75 |... 65,499,506,511 |
+  hsa_utils.ts                                   |      100 |      100 |      100 |      100 |                   |
+  mock_utils.ts                                  |      100 |      100 |      100 |      100 |                   |
+  note_utils.ts                                  |    96.83 |    88.89 |    95.65 |    96.61 |            75,179 |
+  object_filter_utils.ts                         |      100 |      100 |      100 |      100 |                   |
+  prescription_utils.ts                          |     92.5 |    75.28 |    89.29 |    92.11 |... 98,292,293,294 |
+  profile_utils.ts                               |    30.77 |        0 |        0 |    30.77 |... 29,39,40,50,51 |
+  provider_utils.ts                              |    91.67 |    59.09 |      100 |    91.43 |... 36,142,236,239 |
+  repository_utils.ts                            |    61.11 |       50 |    57.14 |    64.71 | 20,39,40,42,50,74 |
+  subject_utils.ts                               |    33.33 |        0 |        0 |    33.33 |        8,34,35,37 |
+  tip_utils.ts                                   |    66.67 |    76.67 |       50 |    68.29 |... 01,184,190,192 |
+ src/util/sagas                                  |    76.62 |    34.21 |    73.68 |    76.32 |                   |
+  check_network_saga_utils.ts                    |      100 |      100 |      100 |      100 |                   |
+  condition_sagas_utils.ts                       |    65.22 |     37.5 |    66.67 |    65.22 |... 17,36,37,39,61 |
+  onboarding_sagas_utils.ts                      |      100 |      100 |      100 |      100 |                   |
+  prescription_sagas_utils.ts                    |      100 |    83.33 |      100 |      100 |                19 |
+  providers_sagas_utils.ts                       |    79.17 |    20.83 |    71.43 |    78.72 |... 32,139,145,147 |
+ src/util/scenes                                 |    52.63 |        0 |     12.5 |     62.5 |                   |
+  history.ts                                     |    52.63 |        0 |     12.5 |     62.5 | 11,12,13,14,17,22 |
+ src/util/test                                   |    94.64 |    72.73 |    94.44 |    95.83 |                   |
+  history_sagas_test_utils.ts                    |      100 |      100 |      100 |      100 |                   |
+  onboarding_sagas_test_utils.ts                 |      100 |      100 |      100 |      100 |                   |
+  prescriptions_sagas_test_utils.ts              |      100 |      100 |      100 |      100 |                   |
+  providers_sagas_test_utils.ts                  |       75 |       25 |       75 |    77.78 |             46,78 |
+  test_utils.ts                                  |      100 |       70 |      100 |      100 |          21,22,72 |
+-------------------------------------------------|----------|----------|----------|----------|-------------------|

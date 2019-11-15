@@ -4,6 +4,8 @@ import json
 import os
 from parsers.parser_helpers import ParserHelpers
 from parsers.parser_extractors import ReportExtractors
+import datetime
+import dateutil.relativedelta
 
 
 class ReportParser:
@@ -24,10 +26,24 @@ class ReportParser:
         ParserHelpers.info("Parsing reports at: {0}".format(self.source_directory.absolute()))
 
         files_in_report = ReportParser.get_files_by_pattern(self.source_directory, file_pattern)
+        files_in_report = ReportParser.keep_reports_by_time_block(file_list=files_in_report, months_to_keep=2)
+
         if not files_in_report or len(files_in_report) == 0:
             ParserHelpers.error("No report files found in {0}".format(self.source_directory))
 
         return files_in_report
+
+    @staticmethod
+    def keep_reports_by_time_block(file_list, months_to_keep):
+        trimmed_list = []
+        current_datetime = datetime.datetime.now()
+        earliest_date = current_datetime - dateutil.relativedelta.relativedelta(months=months_to_keep)
+
+        for file in file_list:
+            file_date = ParserHelpers.extract_date_from_filename(source_file=file)
+            if earliest_date <= file_date <= current_datetime:
+                trimmed_list.append(file)
+        return trimmed_list
 
     # OUTPUT
 
@@ -38,7 +54,7 @@ class ReportParser:
     def build_report(self, report_history, coverage_type):
         json_report = {}
         json_report["service"] = self.service
-        json_report["report_date"] = ParserHelpers.get_timestamp()
+        json_report["report_date"] = ParserHelpers.get_current_timestamp()
         json_report["coverage_type"] = coverage_type
         json_report["report_history"] = report_history
         return json_report
